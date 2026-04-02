@@ -2,7 +2,7 @@
 
 WriteFlow is an emotional micro-journaling platform built by the Code Eleven team. Users write short posts tagged with one of seven emotions, browse posts by emotion, and react through predefined buttons instead of free-form comments.
 
-> Portfolio note: this project was originally developed as a team repository. My primary contribution was the author-side frontend experience, including authentication flows, protected routes, the post creation flow, profile page, and frontend API integration. Original team repository: `https://github.com/wjddudgns/CODE_ELEVEN`
+> Portfolio note: this project was originally developed as a team repository. My primary contribution was the author-side frontend experience, including authentication flows, protected routes, the post creation flow, profile page, and frontend API integration. Original team repository: <https://github.com/wjddudgns/CODE_ELEVEN>
 
 ## 中文简介
 
@@ -145,8 +145,8 @@ Gateway default URL:
 
 ## Screenshots
 
-![Test](./images/Screenshot_test.png)
-![Sample](./images/Screenshot_sample.png)
+[Test](./images/Screenshot_test.png)
+[Sample](./images/Screenshot_sample.png)
 
 ## Attribution
 
