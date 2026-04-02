@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "emotion": "ANGER",
+      "emotionLabel": "😠 분노",
+      "content": "짜증난다",
+      "buttons": []
+    }
+  ]
+}

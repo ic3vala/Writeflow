@@ -1,0 +1,82 @@
+version: "3.9"
+
+services:
+  # 데이터베이스 (Postgres)
+  db:
+    image: postgres:16
+    container_name: writeflow-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: writeflow
+      POSTGRES_USER: writeflow
+      POSTGRES_PASSWORD: writeflow
+#    ports:
+#      - "5432:5432"          # 로컬에서 접속하고 싶으면 열어두기
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - writeflow-net
+
+  # Java 인증 서버 (api-auth-java)
+  api-auth-java:
+    build:
+      context: ./apps/api-auth-java
+      dockerfile: Dockerfile
+    container_name: api-auth-java
+    depends_on:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: writeflow
+      DB_USER: writeflow
+      DB_PASSWORD: writeflow
+      JWT_SECRET: "change-this-secret-to-a-long-random-string"
+    ports:
+      - "8082:8082"          # 필요시 호스트 포트 매핑
+    networks:
+      - writeflow-net
+
+  # Java 코어 서버 (api-core-java)
+  api-core-java:
+    build:
+      context: ./apps/api-core-java
+      dockerfile: Dockerfile
+    container_name: api-core-java
+    depends_on:
+      - db
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: writeflow
+      DB_USER: writeflow
+      DB_PASSWORD: writeflow
+      JWT_SECRET: "change-this-secret-to-a-long-random-string"  # auth와 동일해야 함
+    ports:
+      - "8081:8081"
+    networks:
+      - writeflow-net
+
+  # Nginx 게이트웨이
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: writeflow-gateway
+    depends_on:
+      - api-auth-java
+      - api-core-java
+    ports:
+      - "80:80"
+    networks:
+      - writeflow-net
+
+volumes:
+  db-data:
+
+networks:
+  writeflow-net:
+    driver: bridge
+

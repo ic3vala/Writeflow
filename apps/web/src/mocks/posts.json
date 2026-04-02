@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "authorName": "테스트유저",
+  "content": "이건 테스트 글입니다",
+  "emotion": "JOY",
+  "emotionLabel": "기쁨",
+  "llmReply": "당신의 기쁨이 전해져요!",
+  "hidden": false,
+  "reportedCount": 3,
+  "createdAt": "2025-01-01T12:00:00",
+  "buttons": [
+    { "buttonType": "EMPATHY", "label": "공감", "clickCount": 4 },
+    { "buttonType": "GOOD", "label": "좋음", "clickCount": 2 }
+  ]
+}

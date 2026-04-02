@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "authorName": "testUser",
+  "content": "Mock 글 내용입니다.",
+  "emotion": "ANGER",
+  "emotionLabel": "분노",
+  "llmReply": "AI 해석 mock입니다.",
+  "hidden": false,
+  "reportedCount": 2,
+  "createdAt": "2025-01-01T12:00:00",
+  "buttons": [
+    { "buttonType": "EMPATHY", "label": "공감", "clickCount": 3 },
+    { "buttonType": "GOOD", "label": "좋음", "clickCount": 1 }
+  ]
+}

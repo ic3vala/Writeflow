@@ -1,0 +1,631 @@
+/* ============================================
+   ⭐ 감정별 전체 페이지 배경 (WritePost와 동일 구조)
+   ============================================ */
+
+.emotion-feed-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* 감정별 테마 */
+.theme-joy .emotion-feed-bg {
+  background: linear-gradient(135deg, #fff6b2, #ffd76a);
+}
+
+.theme-anger .emotion-feed-bg {
+  background: linear-gradient(135deg, #ffbaba, #ff7b7b);
+}
+
+.theme-sadness .emotion-feed-bg {
+  background: linear-gradient(135deg, #dfe9f5, #b8c6db);
+}
+
+[data-theme="light"] .theme-pleasure .emotion-feed-bg {
+  background: linear-gradient(135deg, #eaffc4, #c8ff8f);
+}
+
+.theme-love .emotion-feed-bg {
+  background: linear-gradient(135deg, #ffdce7, #ff9bb5);
+}
+
+[data-theme="light"] .theme-hate .emotion-feed-bg {
+  background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+}
+
+.theme-ambition .emotion-feed-bg {
+  background: linear-gradient(135deg, #ffd89b, #ff9e67);
+}
+
+.theme-joy.writepage-bg {
+  background: linear-gradient(135deg, #fff6b2, #ffd76a);
+}
+
+.theme-anger.writepage-bg {
+  background: linear-gradient(135deg, #ffbaba, #ff7b7b);
+}
+
+.theme-sadness.writepage-bg {
+  background: linear-gradient(135deg, #dfe9f5, #b8c6db);
+}
+
+.theme-pleasure.writepage-bg {
+  background: linear-gradient(135deg, #ffe8b5, #ffd28a);
+}
+
+.theme-love.writepage-bg {
+  background: linear-gradient(135deg, #ffdce7, #ff9bb5);
+}
+
+.theme-hate.writepage-bg {
+  background: linear-gradient(135deg, #ffcccc, #ff9090);
+}
+
+.theme-ambition.writepage-bg {
+  background: linear-gradient(135deg, #ffd89b, #ff9e67);
+}
+
+
+/* 밤하늘 효과 (다크모드) */
+[data-theme="dark"] .emotion-feed-bg {
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.08), #000);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .emotion-feed-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* 컨텐츠 래퍼 */
+.emotion-feed-bg {
+  min-height: 100vh;
+  padding: 24px 0 80px;
+}
+
+
+
+/* ============================================
+   ⭐ 카드 리스트
+   ============================================ */
+
+.emotion-feed-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow-x: hidden;
+}
+
+
+/* ============================================
+   ⭐ 감정 카드 (WritePost 카드 스타일과 동일)
+   ============================================ */
+
+.emotion-card {
+  background: rgba(255,255,255,0.55);
+  border-radius: 22px;
+  padding: 22px 20px 14px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] .emotion-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.6),
+    0 0 40px rgba(255,255,255,0.05);
+}
+
+/* hover */
+.emotion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.20);
+}
+
+
+/* ============================================
+   카드 내부 요소
+   ============================================ */
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.emotion-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.65);
+}
+
+.card-date {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+
+/* 카드 본문 */
+.card-content p {
+  white-space: pre-wrap;
+  line-height: 1.55;
+  font-size: 15px;
+  color: #333;
+  
+}
+
+[data-theme="dark"] .card-content p {
+  color: #ececec;
+}
+
+
+/* 감정 스탬프 */
+.card-stamps {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stamp-btn {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+[data-theme="dark"] .stamp-btn {
+  background: rgba(255,255,255,0.15);
+  color: #eee;
+}
+
+.feed-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 18px 120px;
+}
+
+/* STEP2 카드 fade-in */
+.list-card {
+  margin-bottom: 26px;
+  padding: 22px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  animation: fadein 0.4s ease-out;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 메뉴 팝업 fade */
+.fade-in-popup {
+  animation: fadein 0.25s ease-out;
+}
+
+/* 상단 행 */
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step2-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.step2-header .ctrl-back {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.step2-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.step2-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.step2-back {
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.step2-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  opacity: 0.7;
+  transition: 0.1s ease;
+}
+
+.menu-popup {
+  position: absolute;
+  top: 32px;
+  right: 4px;
+
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+
+.menu-popup button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  text-align: left;
+  padding: 6px 2px;
+  cursor: pointer;
+}
+
+.stamp-item {
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: "Pretendard", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.stamp-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.90);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] .stamp-item {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #eee;
+}
+.theme-joy .stamp-item {
+  background: rgba(255, 240, 150, 0.55);
+}
+
+.theme-anger .stamp-item {
+  background: rgba(255, 200, 195, 0.55);
+}
+
+.theme-sadness .stamp-item {
+  background: rgba(210, 225, 255, 0.50);
+}
+
+.theme-pleasure .stamp-item {
+  background: rgba(255, 227, 180, 0.55);
+}
+
+.theme-love .stamp-item {
+  background: rgba(255, 210, 225, 0.55);
+}
+
+.theme-hate .stamp-item {
+  background: rgba(255, 170, 170, 0.50);
+}
+
+.theme-ambition .stamp-item {
+  background: rgba(255, 200, 150, 0.50);
+}
+
+.stamp-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  margin-top: 12px;
+  width: calc(100% - 12px);
+  margin-left: 6px;
+}
+.stamp-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 16px 0 12px;
+}
+
+[data-theme="dark"] .stamp-divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* -------------------------------------------
+   공통 헤더 (WritePost / Step1 / Step2 모두 사용)
+------------------------------------------- */
+
+.step2-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+.step2-header .ctrl-back {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  font-size: 20px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.step2-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ================================
+   🔙 공통 뒤로가기 버튼 (Step1 + Step2)
+   ================================ */
+.step-back {
+  all: unset;
+  cursor: pointer;
+
+  font-size: 20px;          /* 🔽 기존 28px → 줄임 */
+  font-weight: 600;
+  color: #333;
+
+  position: relative;
+  top: -6px;                /* 🔼 제목보다 위로 올림 */
+  margin-right: 6px;
+
+  padding: 4px 6px;
+  border-radius: 6px;
+
+  opacity: 0.8;
+  transition: 0.15s ease;
+}
+
+.step-back:hover {
+  transform: translateX(-3px);
+  opacity: 1;
+}
+
+[data-theme="dark"] .step-back {
+  color: #f2f2f2;
+}
+
+/* ============================
+   🔙 화살표를 제목 위로 분리하는 래퍼
+   ============================ */
+.step1-back-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 6px;     /* ← 제목과 간격 */
+  margin-top: -10px;      /* 필요하면 더 조정 가능 */
+}
+
+/* 🔙 공통 화살표 스타일 */
+.step-back {
+  all: unset;
+  cursor: pointer;
+  font-size: 20px;        /* 살짝 작게 */
+  font-weight: 600;
+  color: #333;
+  padding: 6px 8px;
+
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+.step-back:hover {
+  transform: translateX(-3px);
+  opacity: 1;
+}
+
+[data-theme="dark"] .step-back {
+  color: #eee;
+}
+
+.step2-header {
+  display: flex;
+  flex-direction: column;  /* ← 세로 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 8px;                /* 화살표와 제목 간격 */
+  margin-bottom: 20px;
+}
+
+.step-back {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text, #333);
+}
+
+.step2-title,
+.step2-header h3 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+.card-link {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.card-link:hover {
+  text-decoration: none !important;
+  color: inherit;
+}
+/* 🔘 플로팅 버튼 컨테이너 */
+.floating-buttons {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 99999; /* 매우 높게 — 무조건 보이도록 */
+}
+
+/* 🔘 개별 버튼 */
+.floating-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.floating-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: translateY(-3px);
+}
+
+/* ⭐ fixed 포지션 깨는 transform 제거 */
+.writepage-bg,
+.feed-wrapper,
+.step,
+.step2,
+.step1,
+.write-wrapper,
+.card-appear {
+  transform: none !important;
+}
+
+/* 🔘 플로팅 버튼 컨테이너 */
+.floating-buttons {
+  position: fixed;
+  right: 14px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999999; /* 최상단 */
+  pointer-events: auto;
+}
+
+/* 🔘 동그랗고 작은 버튼 */
+.floating-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.floating-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-3px);
+}
+
+.feed-card {
+  width: 100%;
+  padding: 20px 16px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.45);   /* 투명 */
+  backdrop-filter: blur(8px);              /* 블러 */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feed-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
