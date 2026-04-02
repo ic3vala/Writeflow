@@ -145,8 +145,8 @@ Gateway default URL:
 
 ## Screenshots
 
-[Test](./images/Screenshot_test.png)
-[Sample](./images/Screenshot_sample.png)
+![Test](./images/Screenshot_test.png)
+![Sample](./images/Screenshot_sample.png)
 
 ## Attribution
 
